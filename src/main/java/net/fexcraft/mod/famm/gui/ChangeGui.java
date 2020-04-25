@@ -7,8 +7,9 @@ import net.minecraft.util.ResourceLocation;
 public class ChangeGui extends GenericGui<ChangeContainer> {
 
 	public ChangeGui(EntityPlayer player, int x, int y, int z){
-		super(new ResourceLocation("famm/gui/change.png"), new ChangeContainer(player, x, y, z), player);
-		//
+		super(new ResourceLocation("famm:textures/gui/change.png"), new ChangeContainer(player, x, y, z), player);
+		xSize = 212;
+		ySize = 208;
 	}
 
 	@Override

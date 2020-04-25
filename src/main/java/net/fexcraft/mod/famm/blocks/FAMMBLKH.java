@@ -3,6 +3,7 @@ package net.fexcraft.mod.famm.blocks;
 import net.fexcraft.lib.mc.registry.FCLRegistry;
 import net.fexcraft.lib.mc.utils.Print;
 import net.fexcraft.mod.famm.FAMM;
+import net.fexcraft.mod.famm.items.FAMMItems;
 import net.fexcraft.mod.famm.util.FI;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -98,6 +99,9 @@ public class FAMMBLKH extends Block {
     			i++; if(i > 3){i = 0;}
     			Print.log(state.getValue(DEPTH));
     			w.setBlockState(pos, this.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(DEPTH, i), 2);
+    		}
+    		else if(p.getHeldItemMainhand().getItem() == FAMMItems.ink){
+    			p.openGui(FAMM.INSTANCE, 0, w, pos.getX(), pos.getY(), pos.getZ());
     		}
     	}
 		return true;
