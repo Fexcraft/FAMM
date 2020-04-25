@@ -107,19 +107,19 @@ public class FAMMBLKH extends Block {
     public IBlockState getStateFromMeta(int meta){
     	EnumFacing facing; int depth;
     	if(meta < 4){
-    		facing = EnumFacing.getHorizontal(meta);
+    		facing = EnumFacing.byHorizontalIndex(meta);
     		depth = 0;
     	}
     	else if(meta < 8){
-    		facing = EnumFacing.getHorizontal(meta - 4);
+    		facing = EnumFacing.byHorizontalIndex(meta - 4);
     		depth = 1;
     	}
     	else if(meta < 12){
-    		facing = EnumFacing.getHorizontal(meta - 8);
+    		facing = EnumFacing.byHorizontalIndex(meta - 8);
     		depth = 2;
     	}
     	else if(meta < 16){
-    		facing = EnumFacing.getHorizontal(meta - 12);
+    		facing = EnumFacing.byHorizontalIndex(meta - 12);
     		depth = 3;
     	}
     	else{
@@ -140,7 +140,7 @@ public class FAMMBLKH extends Block {
 	
     @Override
     protected BlockStateContainer createBlockState(){
-        return new BlockStateContainer(this, new IProperty[] {FACING, DEPTH});
+        return new BlockStateContainer(this, new IProperty[] { FACING, DEPTH });
     }
 	
 }

@@ -2,12 +2,13 @@ package net.fexcraft.mod.famm;
 
 import java.io.File;
 
+import net.fexcraft.lib.mc.registry.FCLRegistry;
 import net.fexcraft.mod.famm.blocks.FAMMBlocks;
+import net.fexcraft.mod.famm.gui.GuiHandler;
 import net.fexcraft.mod.famm.items.FAMMItems;
 import net.fexcraft.mod.famm.util.FAMMEventHandler;
 import net.fexcraft.mod.famm.util.FI;
 import net.fexcraft.mod.famm.util.UpdateHandler;
-import net.fexcraft.lib.mc.registry.FCLRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod(modid = "famm", name = "Fex's Alphabet & More Mod", version = FI.VERSION, updateJSON = "http://fexcraft.net/minecraft/fcl/request?mode=getForgeUpdateJson&modid=famm", dependencies = "required-after:fcl")
 public class FAMM {
@@ -29,6 +31,9 @@ public class FAMM {
 	public static boolean conf6;
 	
 	public static File temp_path;
+	//
+    @Mod.Instance("famm")
+	public static FAMM INSTANCE;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){
@@ -40,13 +45,14 @@ public class FAMM {
 		
 		//Config Stuff
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		String category = "###{> Blocks <]###";
 	    config.load();
 	    //conf1 = config.getBoolean("enable_update_checker", "###[> General <]###", true, "Update Checker");
-	    conf2 = config.getBoolean("enable_default_blocks", "###{> Blocks <]###", true, "Should default FAMM Blocks be enabled?");
-	    conf3 = config.getBoolean("enable_half_blocks", "###{> Blocks <]###", true, "Should FAMM HalfBlocks be enabled?.");
-	    conf4 = config.getBoolean("enable_centered_half_blocks", "###{> Blocks <]###", true, "Should FAMM Centered HalfBlocks be enabled?");
-	    conf5 = config.getBoolean("enable_slabs", "###{> Blocks <]###", true, "Should FAMM Slabs be enabled?");
-	    conf6 = config.getBoolean("enable_tiles", "###{> Blocks <]###", true, "Should FAMM Tiles be enabled?");
+	    conf2 = config.getBoolean("enable_default_blocks", category, true, "Should default FAMM Blocks be enabled?");
+	    conf3 = config.getBoolean("enable_half_blocks", category, true, "Should FAMM HalfBlocks be enabled?.");
+	    conf4 = config.getBoolean("enable_centered_half_blocks", category, true, "Should FAMM Centered HalfBlocks be enabled?");
+	    conf5 = config.getBoolean("enable_slabs", category, true, "Should FAMM Slabs be enabled?");
+	    conf6 = config.getBoolean("enable_tiles", category, true, "Should FAMM Tiles be enabled?");
 	    
 	    config.save();
 	    //Config End
@@ -63,7 +69,7 @@ public class FAMM {
 	
 	public static CreativeTabs tabFAMM = new CreativeTabs("tabFAMM"){
 		@Override
-		public ItemStack getTabIconItem() {
+		public ItemStack createIcon(){
 			return new ItemStack(Item.getItemFromBlock(FAMMBlocks.get("f")));
 		}
 	};
@@ -72,6 +78,7 @@ public class FAMM {
 	public void init(FMLInitializationEvent event){
 		MinecraftForge.EVENT_BUS.register(new FAMMEventHandler());
 		UpdateHandler.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, new GuiHandler());
 	}
 	
 	@Mod.EventHandler

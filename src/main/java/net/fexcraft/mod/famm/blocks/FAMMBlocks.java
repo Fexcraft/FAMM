@@ -1,6 +1,7 @@
 package net.fexcraft.mod.famm.blocks;
 
 import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 
 public final class FAMMBlocks{
@@ -86,7 +87,7 @@ public final class FAMMBlocks{
 	public static Block get(String id){
 		Block result = null;
 		for(Block block : blocks){
-			if(block.getRegistryName().getResourcePath().equals(id)){
+			if(block.getRegistryName().getPath().equals(id)){
 				result = block;
 				break;
 			}
