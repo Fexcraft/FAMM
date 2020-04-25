@@ -4,7 +4,6 @@ import net.fexcraft.lib.mc.registry.FCLRegistry;
 import net.fexcraft.lib.mc.utils.Print;
 import net.fexcraft.mod.famm.FAMM;
 import net.fexcraft.mod.famm.items.FAMMItems;
-import net.fexcraft.mod.famm.util.FI;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -34,7 +33,7 @@ public class FAMMBLKH extends Block {
         this.setHardness(1.0F);
         this.setResistance(10.0F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(DEPTH, 3));
-        FCLRegistry.getAutoRegistry(FI.MODID).addBlock(name, this, null, 0, null);
+        FCLRegistry.getAutoRegistry(FAMM.MODID).addBlock(name, this, null, 0, null);
 	}
 
 	@Override

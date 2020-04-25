@@ -1,13 +1,10 @@
 package net.fexcraft.mod.famm;
 
-import java.io.File;
-
 import net.fexcraft.lib.mc.registry.FCLRegistry;
 import net.fexcraft.mod.famm.blocks.FAMMBlocks;
 import net.fexcraft.mod.famm.gui.GuiHandler;
 import net.fexcraft.mod.famm.items.FAMMItems;
 import net.fexcraft.mod.famm.util.FAMMEventHandler;
-import net.fexcraft.mod.famm.util.FI;
 import net.fexcraft.mod.famm.util.UpdateHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -20,8 +17,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-@Mod(modid = "famm", name = "Fex's Alphabet & More Mod", version = FI.VERSION, updateJSON = "http://fexcraft.net/minecraft/fcl/request?mode=getForgeUpdateJson&modid=famm", dependencies = "required-after:fcl")
+@Mod(modid = FAMM.MODID, name = "Fex's Alphabet & More Mod", version = FAMM.VERSION, updateJSON = "http://fexcraft.net/minecraft/fcl/request?mode=getForgeUpdateJson&modid=famm", dependencies = "required-after:fcl")
 public class FAMM {
+	
+	public static final String MODID = "famm";
+	public static final String VERSION = "3.3.0";
 	
 	//public static boolean conf1;
 	public static boolean conf2;
@@ -29,21 +29,15 @@ public class FAMM {
 	public static boolean conf4;
 	public static boolean conf5;
 	public static boolean conf6;
-	
-	public static File temp_path;
 	//
-    @Mod.Instance("famm")
+    @Mod.Instance(MODID)
 	public static FAMM INSTANCE;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		FCLRegistry.newAutoRegistry("famm");
-		temp_path = new File(event.getModConfigurationDirectory().getParent(), "/FRSM/FRSM_Data/");
-		if(!temp_path.exists()){
-			temp_path.mkdirs();
-		}
 		
-		//Config Stuff
+		//Config Begin
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		String category = "###{> Blocks <]###";
 	    config.load();
@@ -53,7 +47,6 @@ public class FAMM {
 	    conf4 = config.getBoolean("enable_centered_half_blocks", category, true, "Should FAMM Centered HalfBlocks be enabled?");
 	    conf5 = config.getBoolean("enable_slabs", category, true, "Should FAMM Slabs be enabled?");
 	    conf6 = config.getBoolean("enable_tiles", category, true, "Should FAMM Tiles be enabled?");
-	    
 	    config.save();
 	    //Config End
 		
