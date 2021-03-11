@@ -6,7 +6,6 @@ import org.lwjgl.opengl.GL11;
 
 import net.fexcraft.lib.mc.gui.GenericGui;
 import net.fexcraft.mod.famm.FAMM;
-import net.fexcraft.mod.famm.blocks.FAMMBLK;
 import net.fexcraft.mod.famm.blocks.FAMMBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderHelper;
@@ -14,18 +13,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class ChangeGui extends GenericGui<ChangeContainer> {
 	
 	private static ArrayList<ItemStack> stacks;
 	private static ArrayList<String> ids;
-	private static boolean full;
 
 	public ChangeGui(EntityPlayer player, int x, int y, int z){
 		super(new ResourceLocation("famm:textures/gui/change.png"), new ChangeContainer(player, x, y, z), player);
-		full = player.world.getBlockState(new BlockPos(x, y, z)).getBlock() instanceof FAMMBLK;
 		xSize = 194;
 		ySize = 154;
 		if(stacks == null){
@@ -77,7 +73,7 @@ public class ChangeGui extends GenericGui<ChangeContainer> {
 		if(button.name.startsWith("button_")){
 			NBTTagCompound compound = new NBTTagCompound();
 			String id = button.name.substring("button_".length());
-			compound.setString("block", full ? id.replace("_hb", "") : id);
+			compound.setString("block", id.replace("_hb", ""));
 			container.send(Side.SERVER, compound);
 			player.closeScreen();
 		}
