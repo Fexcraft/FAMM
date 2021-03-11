@@ -1,7 +1,6 @@
 package net.fexcraft.mod.famm.gui;
 
 import net.fexcraft.lib.mc.gui.GenericContainer;
-import net.fexcraft.mod.famm.blocks.FAMMBLK;
 import net.fexcraft.mod.famm.blocks.FAMMBLKH;
 import net.fexcraft.mod.famm.blocks.FAMMBlocks;
 import net.fexcraft.mod.famm.items.FAMMItems;
@@ -26,10 +25,7 @@ public class ChangeContainer extends GenericContainer {
 		if(packet.hasKey("block")){
 			if(player.getHeldItemMainhand().getItem() != FAMMItems.ink) return;
 			IBlockState state = player.world.getBlockState(pos);
-			boolean half;
-			if(state.getBlock() instanceof FAMMBLK) half = false;
-			else if(state.getBlock() instanceof FAMMBLKH) half = true;
-			else return;
+			boolean half = state.getBlock() instanceof FAMMBLKH;
 			Block newblk = FAMMBlocks.get(packet.getString("block") + (half ? "_hb" : ""));
 			IBlockState newstate = newblk.getDefaultState();
 			if(half){
