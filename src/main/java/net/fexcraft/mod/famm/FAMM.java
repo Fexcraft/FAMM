@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 public class FAMM {
 	
 	public static final String MODID = "famm";
-	public static final String VERSION = "3.3.0";
+	public static final String VERSION = "3.4.0";
 	
 	//public static boolean conf1;
 	public static boolean conf2, conf3, conf4, conf5, conf6;
