@@ -24,11 +24,8 @@ public class FAMM {
 	public static final String VERSION = "3.3.0";
 	
 	//public static boolean conf1;
-	public static boolean conf2;
-	public static boolean conf3;
-	public static boolean conf4;
-	public static boolean conf5;
-	public static boolean conf6;
+	public static boolean conf2, conf3, conf4, conf5, conf6;
+	public static boolean numbers, latin, cyrillic, signs;
 	//
     @Mod.Instance(MODID)
 	public static FAMM INSTANCE;
@@ -39,14 +36,20 @@ public class FAMM {
 		
 		//Config Begin
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-		String category = "###{> Blocks <]###";
+		String cat_types = "Block Types";
+		String cat_alpha = "Alphabets & More";
 	    config.load();
 	    //conf1 = config.getBoolean("enable_update_checker", "###[> General <]###", true, "Update Checker");
-	    conf2 = config.getBoolean("enable_default_blocks", category, true, "Should default FAMM Blocks be enabled?");
-	    conf3 = config.getBoolean("enable_half_blocks", category, true, "Should FAMM HalfBlocks be enabled?.");
-	    conf4 = config.getBoolean("enable_centered_half_blocks", category, true, "Should FAMM Centered HalfBlocks be enabled?");
-	    conf5 = config.getBoolean("enable_slabs", category, true, "Should FAMM Slabs be enabled?");
-	    conf6 = config.getBoolean("enable_tiles", category, true, "Should FAMM Tiles be enabled?");
+	    conf2 = config.getBoolean("enable_default_blocks", cat_types, true, "Should default FAMM Blocks be enabled?");
+	    conf3 = config.getBoolean("enable_half_blocks", cat_types, true, "Should FAMM HalfBlocks be enabled?.");
+	    conf4 = config.getBoolean("enable_centered_half_blocks", cat_types, true, "Should FAMM Centered HalfBlocks be enabled?");
+	    conf5 = config.getBoolean("enable_slabs", cat_types, true, "Should FAMM Slabs be enabled?");
+	    conf6 = config.getBoolean("enable_tiles", cat_types, true, "Should FAMM Tiles be enabled?");
+	    //
+	    numbers = config.getBoolean("enable_numbers", cat_alpha, true, "Should NUMBER Blocks be enabled?");
+	    latin = config.getBoolean("enable_latin_letters", cat_alpha, true, "Should LATIN Letter Blocks be enabled?");
+	    cyrillic = config.getBoolean("enable_cyrillic_letters", cat_alpha, true, "Should CYRILLIC Letter Blocks be enabled?");
+	    signs = config.getBoolean("enable_signs", cat_alpha, true, "Should SIGN/SYMBOL/DECO Blocks be enabled?");
 	    config.save();
 	    //Config End
 		
