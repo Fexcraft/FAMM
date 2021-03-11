@@ -25,7 +25,7 @@ public class FAMM {
 	
 	//public static boolean conf1;
 	public static boolean conf2, conf3, conf4, conf5, conf6;
-	public static boolean numbers, latin, cyrillic, signs, ronum;
+	public static boolean numbers, latin, cyrillic, signs, ronum, deco;
 	//
     @Mod.Instance(MODID)
 	public static FAMM INSTANCE;
@@ -49,17 +49,14 @@ public class FAMM {
 	    numbers = config.getBoolean("enable_numbers", cat_alpha, true, "Should NUMBER Blocks be enabled?");
 	    latin = config.getBoolean("enable_latin_letters", cat_alpha, true, "Should LATIN Letter Blocks be enabled?");
 	    cyrillic = config.getBoolean("enable_cyrillic_letters", cat_alpha, true, "Should CYRILLIC Letter Blocks be enabled?");
-	    signs = config.getBoolean("enable_signs", cat_alpha, true, "Should SIGN/SYMBOL/DECO Blocks be enabled?");
+	    signs = config.getBoolean("enable_signs", cat_alpha, true, "Should SIGN/SYMBOL Blocks be enabled?");
 	    ronum = config.getBoolean("enable_roman_numbers", cat_alpha, true, "Should ROMAN NUMBER Blocks be enabled?");
+	    deco = config.getBoolean("enable_signs", cat_alpha, true, "Should DECO Blocks be enabled?");
 	    config.save();
 	    //Config End
 		
-		if(FAMM.conf2 == true){
-			FAMMBlocks.initializeDefault();
-		}
-		if(FAMM.conf3 == true){
-			FAMMBlocks.initializeHalfBlocks();
-		}
+		if(FAMM.conf2 == true) FAMMBlocks.initialize(true);
+		if(FAMM.conf3 == true) FAMMBlocks.initialize(false);
 		
 		FAMMItems.init();
 	}
