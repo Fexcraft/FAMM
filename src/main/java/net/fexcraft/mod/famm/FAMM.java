@@ -25,7 +25,7 @@ public class FAMM {
 	
 	//public static boolean conf1;
 	public static boolean conf2, conf3, conf4, conf5, conf6;
-	public static boolean numbers, latin, cyrillic, signs;
+	public static boolean numbers, latin, cyrillic, signs, ronum;
 	//
     @Mod.Instance(MODID)
 	public static FAMM INSTANCE;
@@ -50,6 +50,7 @@ public class FAMM {
 	    latin = config.getBoolean("enable_latin_letters", cat_alpha, true, "Should LATIN Letter Blocks be enabled?");
 	    cyrillic = config.getBoolean("enable_cyrillic_letters", cat_alpha, true, "Should CYRILLIC Letter Blocks be enabled?");
 	    signs = config.getBoolean("enable_signs", cat_alpha, true, "Should SIGN/SYMBOL/DECO Blocks be enabled?");
+	    ronum = config.getBoolean("enable_roman_numbers", cat_alpha, true, "Should ROMAN NUMBER Blocks be enabled?");
 	    config.save();
 	    //Config End
 		
