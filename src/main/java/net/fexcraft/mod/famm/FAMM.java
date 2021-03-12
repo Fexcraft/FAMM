@@ -51,7 +51,7 @@ public class FAMM {
 	    cyrillic = config.getBoolean("enable_cyrillic_letters", cat_alpha, true, "Should CYRILLIC Letter Blocks be enabled?");
 	    signs = config.getBoolean("enable_signs", cat_alpha, true, "Should SIGN/SYMBOL Blocks be enabled?");
 	    ronum = config.getBoolean("enable_roman_numbers", cat_alpha, true, "Should ROMAN NUMBER Blocks be enabled?");
-	    deco = config.getBoolean("enable_signs", cat_alpha, true, "Should DECO Blocks be enabled?");
+	    deco = config.getBoolean("enable_decorations", cat_alpha, true, "Should DECO Blocks be enabled?");
 	    blank = config.getBoolean("enable_blanks", cat_alpha, true, "Shoudl BLANK Blocks be enabled? (For custom purpose/texture via ResourcePacks.)");
 	    config.save();
 	    //Config End
