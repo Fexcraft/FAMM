@@ -15,11 +15,16 @@ public final class FAMMBlocks{
 	public static String[] all_blocknames =
 		new String[]{ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
 					"n0", "n1", "n2", "n3", "n4", "n5", "n6", "n7", "n8", "n9", "plus", "minus", "empty", "questionmark", "exclamationmark", "point",
-					"pointdown", "comma", "colon", "space", "stop", "arrowright", "arrowleft", "arrowtop", "arrowbot", "ri", "rii", "riii", "riv", "rv",
+					"pointdown", "comma", "colon", "space", "stop", "arrowright", "arrowleft", "arrowtop", "arrowbot", "et", "approx", "asterisk",
+					"at", "lt", "gt", "lte", "gte", "degree", "slash", "backslash", "equal", "hash", "infinity", "hyphen", "not_equal",
+					"bracket_round_l", "bracket_round_r", "bracket_curly_l", "bracket_curly_r", "bracket_square_l", "bracket_square_r",
+					"bracket_angle_l", "bracket_angle_r", "percent", "promile", "pi", "sqrt", "ri", "rii", "riii", "riv", "rv",
 					"rvi", "rvii", "rviii", "rix", "rx", "rr", "cr", "eh", "es", "ea", "ec", "d1", "d2",
 					"cy_a", "cy_b", "cy_v", "cy_g", "cy_d", "cy_ie", "cy_io", "cy_zh", "cy_z", "cy_i", "cy_j", "cy_k", "cy_l",
 					"cy_m", "cy_n", "cy_o", "cy_p", "cy_r", "cy_s", "cy_t", "cy_u", "cy_f", "cy_h", "cy_ts", "cy_ch", "cy_sh", "cy_shch",
-					"cy_hard_sign", "cy_y", "cy_soft_sign", "cy_e", "cy_yu", "cy_ya" };
+					"cy_hard_sign", "cy_y", "cy_soft_sign", "cy_e", "cy_yu", "cy_ya",
+					"blank0", "blank1", "blank2", "blank3", "blank4", "blank5", "blank6", "blank7", "blank8", "blank9", "blank10",
+					"blank11", "blank12", "blank13", "blank14", "blank15" };
 	public static String[] latin = new String[]{ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
 	public static String[] numbers = new String[]{ "n0", "n1", "n2", "n3", "n4", "n5", "n6", "n7", "n8", "n9" };
 	public static String[] signs = new String[]{ "plus", "minus", "empty", "questionmark", "exclamationmark", "point", "pointdown", "comma", "colon", "space",
@@ -31,6 +36,8 @@ public final class FAMMBlocks{
 	public static String[] cyrillic = new String[]{ "cy_a", "cy_b", "cy_v", "cy_g", "cy_d", "cy_ie", "cy_io", "cy_zh", "cy_z", "cy_i", "cy_j", "cy_k", "cy_l",
 					"cy_m", "cy_n", "cy_o", "cy_p", "cy_r", "cy_s", "cy_t", "cy_u", "cy_f", "cy_h", "cy_ts", "cy_ch", "cy_sh", "cy_shch",
 					"cy_hard_sign", "cy_y", "cy_soft_sign", "cy_e", "cy_yu", "cy_ya" };
+	public static String[] blanks = new String[]{ "blank0", "blank1", "blank2", "blank3", "blank4", "blank5", "blank6", "blank7", "blank8", "blank9", "blank10",
+					"blank11", "blank12", "blank13", "blank14", "blank15"};
 	
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
 	
@@ -52,6 +59,7 @@ public final class FAMMBlocks{
 		if(FAMM.signs) register(signs, full);
 		if(FAMM.ronum) register(ronum, full);
 		if(FAMM.deco) register(deco, full);
+		if(FAMM.blank) register(blanks, full);
     }
 	
 	private static void register(String[] array, boolean full){
