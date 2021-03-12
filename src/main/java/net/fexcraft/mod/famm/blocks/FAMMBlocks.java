@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.google.common.io.Files;
+
 import net.fexcraft.mod.famm.FAMM;
 import net.minecraft.block.Block;
 
@@ -79,6 +81,14 @@ public final class FAMMBlocks{
 		write(HALF_MODEL_3.replace("%s", id), new File(folder, "models/block/" + id + "_hb_3.json"));
 		write(FULL_ITEMMODEL.replace("%s", id), new File(folder, "models/item/" + id + ".json"));
 		write(HALF_ITEMMODEL.replace("%s", id), new File(folder, "models/item/" + id + "_hb.json"));
+		try{
+			File img = new File(folder, "textures/blocks/" + id + ".png");
+			if(img.exists()) return;
+			Files.copy(new File(folder, "textures/blocks/empty.png"), img);
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 
 	private static void write(String string, File file){
