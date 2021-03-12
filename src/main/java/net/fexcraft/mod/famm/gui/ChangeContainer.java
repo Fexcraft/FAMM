@@ -33,7 +33,9 @@ public class ChangeContainer extends GenericContainer {
 				newstate = newstate.withProperty(FAMMBLKH.DEPTH, state.getValue(FAMMBLKH.DEPTH));
 			}
 			player.world.setBlockState(pos, newstate, 2);
-			player.getHeldItemMainhand().shrink(1);
+			if(!player.capabilities.isCreativeMode){
+				player.getHeldItemMainhand().shrink(1);
+			}
 		}
 	}
 
