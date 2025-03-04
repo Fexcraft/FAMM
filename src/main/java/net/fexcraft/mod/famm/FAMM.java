@@ -4,12 +4,10 @@ import net.fexcraft.lib.mc.registry.FCLRegistry;
 import net.fexcraft.mod.famm.blocks.FAMMBlocks;
 import net.fexcraft.mod.famm.gui.GuiHandler;
 import net.fexcraft.mod.famm.items.FAMMItems;
-import net.fexcraft.mod.famm.util.FAMMEventHandler;
-import net.fexcraft.mod.famm.util.UpdateHandler;
+import net.fexcraft.mod.famm.util.Recipes;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -21,7 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 public class FAMM {
 	
 	public static final String MODID = "famm";
-	public static final String VERSION = "3.4.0";
+	public static final String VERSION = "3.4.1";
 	
 	//public static boolean conf1;
 	public static boolean conf2, conf3, conf4, conf5, conf6;
@@ -71,13 +69,12 @@ public class FAMM {
 	
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event){
-		MinecraftForge.EVENT_BUS.register(new FAMMEventHandler());
-		UpdateHandler.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, new GuiHandler());
 	}
 	
 	@Mod.EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		
+		Recipes.init();
 	}
+
 }
